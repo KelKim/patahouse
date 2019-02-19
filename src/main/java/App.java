@@ -40,5 +40,11 @@ public class App {
             model.put("template", "templates/dashboard.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
+
+        get("/loginerror", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("template", "templates/loginerror.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
     }
 }

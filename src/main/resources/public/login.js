@@ -28,7 +28,7 @@ var uiConfig = {
       firebase.auth.PhoneAuthProvider.PROVIDER_ID
     ],
     // Terms of service url.
-    tosUrl: 'dashboard.vtl',
+    tosUrl: 'dashboard',
     // Privacy policy url.
     privacyPolicyUrl: '<your-privacy-policy-url>'
   };
