@@ -19,10 +19,25 @@ public class App {
 
         staticFileLocation("/public");
         String layout = "templates/layout.vtl";
+        
+
+        // before("/dashboard", (request, response) -> {
+        //     String email= request.session().attribute("email");
+        //     if(email==null){
+        //       response.redirect("/");
+        //       halt();
+        //     }
+        //   });
 
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("template", "templates/index.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        get("/dashboard", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("template", "templates/dashboard.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
     }
