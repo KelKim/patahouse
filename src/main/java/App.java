@@ -41,10 +41,17 @@ public class App {
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
-        get("/loginerror", (request, response) -> {
+        // get("/loginerror", (request, response) -> {
+        //     Map<String, Object> model = new HashMap<String, Object>();
+        //     model.put("template", "templates/loginerror.vtl");
+        //     return new ModelAndView(model, layout);
+        // }, new VelocityTemplateEngine());
+
+        get("/addflat", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            model.put("template", "templates/loginerror.vtl");
+            model.put("template", "templates/add-flat-form.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
+
     }
 }
