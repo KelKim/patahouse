@@ -21,14 +21,6 @@ public class App {
         String layout = "templates/layout.vtl";
 
 
-        // before("/dashboard", (request, response) -> {
-        //     String email= request.session().attribute("email");
-        //     if(email==null){
-        //       response.redirect("/");
-        //       halt();
-        //     }
-        //   });
-
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             model.put("template", "templates/index.vtl");
@@ -47,11 +39,45 @@ public class App {
         //     return new ModelAndView(model, layout);
         // }, new VelocityTemplateEngine());
 
-        get("/addflat", (request, response) -> {
+
+        post("/dashboard", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            model.put("template", "templates/add-flat-form.vtl");
+            String propertyname = request.queryParams("propertyname");
+            int vacancies = Integer.parseInt(request.queryParams("vacancies"));
+            String phone = request.queryParams("phone");
+            String location = request.queryParams("location");
+            
+            Property newProperty = new Property(propertyname, phone, location,vacancies);
+            newProperty.save();
+            model.put("template", "templates/flat-success.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
+
+        get("/flats", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("properties", Property.all());
+            model.put("template", "templates/flats.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        get("/properties/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            Property property = Property.find(Integer.parseInt(request.params(":id")));
+            model.put("property", property);
+            model.put("template", "templates/flat.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        post("/properties/:id/delete", (request, response) -> {
+            HashMap<String, Object> model = new HashMap<String, Object>();
+            Property property = Property.find(Integer.parseInt(request.params("id")));
+            // Stylist stylist = Stylist.find(stylist.getId());
+            property.delete();
+            response.redirect("/flats");
+            return null;
+        });
+
+
 
     }
 }

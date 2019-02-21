@@ -110,6 +110,7 @@
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  }
   
     ul {
       list-style-type: none;
@@ -173,29 +174,7 @@ margin-top: 70px;
 margin-bottom: 0;
 /* margin-top: 30px; */
 }
-/* label color */
- .input-field label {
-   color: #9c9c9c;
- }
- /* label focus color */
- .input-field input[type=text]:focus + label {
-   color: #9c9c9c;
- }
- /* label underline focus color */
- .input-field input[type=text]:focus {
-   border-bottom: 1px solid #9c9c9c;
-   box-shadow: 0 1px 0 0 #9c9c9c;
- }
- /* valid color */
- .input-field input[type=text].valid {
-   border-bottom: 1px solid #9c9c9c;
-   box-shadow: 0 1px 0 0 #9c9c9c;
- }
- /* invalid color */
- .input-field input[type=text].invalid {
-   border-bottom: 1px solid #9c9c9c;
-   box-shadow: 0 1px 0 0 #9c9c9c;
- }
+
  /* icon prefix focus color */
  .input-field .prefix.active {
    color: #9c9c9c;
@@ -270,4 +249,20 @@ textarea.materialize-textarea:focus:not([readonly])+label {
 #flat{
 margin-top: 15px;
 color: #000;
+}
+
+#property{
+  margin-left: 250px;
+}
+
+.header{
+  margin-left: 250px;
+}
+
+.meta{
+  margin-left: 250px;
+}
+
+.description{
+  margin-left: 250px;
 }
