@@ -38,4 +38,4 @@ build/
 .gradle/
 .settings/
 bin/
-!gradle-wrapper.jar
+!gradle-wrapper.jarsendgrid.env

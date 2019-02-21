@@ -77,7 +77,19 @@ public class App {
             return null;
         });
 
+        get("/search",(request, response) -> {
+            HashMap<String, Object> model = new HashMap<String, Object>();
+            String searchname = request.queryParams("phone");
+            model.put("searchname", Property.findByLocation(searchname));
+            model.put("template", "templates/search.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
 
-
+        
+        get("/book", (request, response) -> {
+            HashMap<String, Object> model = new HashMap<String, Object>();
+            model.put("template", "templates/book-success.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
     }
 }
