@@ -70,3 +70,12 @@ public void find_returnsPropertyWithSameId_secondProperty() {
   secondProperty.save();
   assertEquals(Property.find(secondProperty.getId()), secondProperty);
 }
+
+@Test
+public void delete_deletesProperty_true() {
+        Property myProperty = new Property("Klos",1);
+        myProperty.save();
+        int myPropertyId = myProperty.getId();
+        myProperty.delete();
+        assertEquals(null, Property.find(myPropertyId));
+}
